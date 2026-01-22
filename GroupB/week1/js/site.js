@@ -1,4 +1,10 @@
 function init() {
+
+   //RenderPlanets();
+   // RenderRainbow();
+    RenderList(GetPlanets(), "listOfPlanets")
+    RenderList(GetRainbow(), "rainbow")
+    RenderList(["Bashful","Doc","Dopey","Grumpy","Happy", "Sneezy", "Sleepy"], "DisneyDwarves")
    // Set up a button so it responds to a click event
     var button = document.getElementById('btnShowYearMonthDay');
     button.addEventListener("click", function () {
