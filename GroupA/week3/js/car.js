@@ -6,6 +6,14 @@ function btnSaveCar() {
     var model = document.getElementById("tbModel").value
     var colour = document.getElementById("tbColour").value
 
+    if (mf === null || model === null || colour === null) return;
+    if (mf.length === 0 || model.length === 0 || colour.length === 0) return;
+
+    
+
+
+    
+
     // console.log(mf);
     // console.log(model);
     // console.log(colour);
@@ -63,7 +71,7 @@ function RenderFleet() {
 
     for (const [index, currentCar] of fleet.entries()) {
 
-        const removeButton = `<button class='btn btn-danger' onclick='removeCar(${index})'>Delete</button>`
+        const removeButton = `<button class='btn btn-danger' onclick='RemoveCar(${index})'>Delete</button>`
 
         const rowItem = `<tr><td>${currentCar.mf}</td><td>${currentCar.model}</td><td>${currentCar.colour}</td><td>${removeButton}</td></tr>`;
 
@@ -73,4 +81,15 @@ function RenderFleet() {
 
     listingDiv.innerHTML = htmlString.join(' ');
 
+}
+
+function RemoveCar(indexOfCar) {
+
+    let fleet = GetFleetFromStorage();
+
+    fleet.splice(indexOfCar, 1);
+
+    localStorage.setItem("fleet", JSON.stringify(fleet));
+
+    RenderFleet(fleet);
 }
