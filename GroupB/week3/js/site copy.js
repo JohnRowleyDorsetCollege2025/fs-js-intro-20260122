@@ -39,16 +39,6 @@ function btnRetrieveFlavour() {
 
 function btnSaveCar() {
 
-
-    var fleetObject = JSON.parse(localStorage.getItem("fleet"));
-
-    if(fleetObject !== null) {
-
-        fleet = fleetObject;
-
-    }
-
-
     let mf = document.getElementById("tbMf").value
     let model = document.getElementById("tbModel").value
     let colour = document.getElementById("tbColour").value
@@ -59,23 +49,7 @@ function btnSaveCar() {
         "colour": colour
     }
 
-    fleet.push(CarObject);
-
-    console.log({ fleet })
-    console.log(JSON.stringify(fleet))
-
-    localStorage.setItem("fleet", JSON.stringify(fleet));
-
-    RenderFleet(fleet);
-}
-
-function btnRetrieveFleet() {
-     RenderFleet(fleet);
-}
-
-function RenderFleet(fleet) {
-
-    for(const car of fleet) {
-        console.log(car.mf);
-    }
+    console.log({ CarObject }) // notice inside {} - renders as object
+    console.log(JSON.stringify(CarObject)) // convert it to a string
+    localStorage.setItem("carObject", JSON.stringify(CarObject)); // need to store as a string
 }
